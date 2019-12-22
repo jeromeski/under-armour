@@ -1,0 +1,38 @@
+
+
+/*  FLAG */ 
+
+.flag-select {
+  padding: 0 !important;
+}
+
+.flag-select .country-flag .country-label {
+  color: #ccc !important;
+}
+
+.flag-select .arrow-down {
+  color: #ccc !important;
+}
+
+.flag-select .flag-options {
+  border-radius: none !important;
+}
+
+.flag-select .selected--flag--option {
+  font-size: 15px !important;
+  padding: 0 !important;
+}
+
+.flag-select .arrow-down {
+  color: white !important;
+  padding: 2px;
+}
+
+
+.flag-select .flag-option .country-label {
+  color: black;
+}
+
+.flag-options .flag-option .country-flag .country-label {
+  color: black !important;
+}

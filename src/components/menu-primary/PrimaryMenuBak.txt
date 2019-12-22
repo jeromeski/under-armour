@@ -1,0 +1,219 @@
+import React, {Component} from 'react'
+import './menuPrimary.styles.css'
+import { Link } from 'react-router-dom'
+import { ReactComponent as Logo} from '../../assets/underArmourLogo.svg'
+
+
+class MenuPrimary extends Component {
+  
+  constructor() {
+    super();
+
+    this.state = {
+      isOpen: false,
+      anchorEl: null
+    };
+
+  }
+
+  handleMouseEnter = event => {
+    console.log("event is ", event.currentTarget.id);
+    this.setState({
+      isOpen: true,
+      anchorEl: event.currentTarget.id
+    });
+  };
+
+  handleMouseLeave = () => {
+    this.setState({
+      isOpen: false,
+      anchorEl: null
+    });
+  };
+
+  render() {
+    return (
+      <div id='header' className='global-header'>
+        <div className='primary-logo'>
+          <Link className='primary-logo__link'>
+            <Logo/>
+          </Link>
+        </div>
+        <nav id='primary-nav' className='navigation__wrapper'>
+          <ul className='navigation clearfix'>
+            <li className='first-level'>
+              <Link
+                className='navigation__link'
+                id='arrivals'
+                onMouseEnter={this.handleMouseEnter}
+              >NEW ARRIVALS</Link>
+              <div
+                className={`${
+                  this.state.isOpen && this.state.anchorEl === "arrivals"
+                    ? "is-open"
+                    : ""
+                } sub-navigation`}
+                onMouseLeave={this.handleMouseLeave}
+              >
+                <nav className='sub-navigation__wrapper sub-navigation_new-arrivals'>
+                  <div className='sub-navigation__categories'>
+                    <div className='sub-navigation__category-row'>
+                      <div className='nav-group sub-navigation__category-group'>
+                        <h5 className='sub-navigation__categories-header'>
+                          <Link>MEN'S NEW ARRIVALS</Link>
+                        </h5>
+                        <h5 className='sub-navigation__categories-header'>
+                          <Link>WOMEN'S NEW ARRIVALS</Link>
+                        </h5>
+                        <h5 className='sub-navigation__categories-header'>
+                          <Link>KID'S NEW ARRIVALS</Link>
+                        </h5>
+                      </div> 
+                    </div>
+                  </div>
+                </nav>
+              </div>
+            </li>
+            <li className='first-level'>
+              <Link 
+                className='navigation__link'
+                id='men'
+                onMouseEnter={this.handleMouseEnter}
+              >MEN</Link>
+              <div
+                className={`${
+                  this.state.isOpen && this.state.anchorEl === "men"
+                    ? "is-open"
+                    : ""
+                } sub-navigation`}
+                onMouseLeave={this.handleMouseLeave}
+              >
+                <nav className='sub-navigation__wrapper sub-navigation_new-arrivals'>
+                  <div className='sub-navigation__spotlight' nav-spotlight-mens>
+                    <ul>
+                      <li>
+                        <Link>BEST SELLERS</Link>
+                      </li>
+                      <li>
+                        <Link>GIFT GUIDE</Link>
+                      </li>
+                      <li>
+                        <Link>STEPHEN CURRY WARDROBE</Link>
+                      </li>
+                      <li>
+                        <Link>PROJECT ROCK COLLECTION</Link>
+                      </li>
+                      <li>
+                        <Link>UA HOVR</Link>
+                      </li>
+                      <li>
+                        <Link>UA RUSH</Link>
+                      </li>
+                      <li>
+                        <Link>SPORTSTYLE</Link>
+                      </li>
+                      <li>
+                        <Link>OUTLET</Link>
+                      </li>
+                    </ul>
+                  </div>
+                  <div className='sub-navigation__categories'>
+                    <div className='sub-navigation__category-row'>
+                      <div className='nav-group sub-navigation__category-group'>
+                      <h5 class="sub-navigation__categories-header">
+                        <Link>Tops</Link>
+                      </h5>
+                        <ul class="sub-categories">
+                          <li>
+                            <Link>Short Sleeves</Link>
+                          </li>
+                          <li>
+                            <Link>Sleeveless & Tanks</Link>
+                          </li>
+                          <li>
+                            <Link>Polos</Link>
+                          </li>
+                          <li>
+                            <Link>Long Sleeves</Link>
+                          </li>
+                          <li>
+                            <Link>Hoodies & Sweatshirts</Link>
+                          </li>
+                          <li>
+                            <Link>Jackets</Link>
+                          </li>
+                        </ul>
+                      </div>
+                      <div class="nav-group sub-navigation__category-group">
+                        <h5 class="sub-navigation__categories-header">Bottoms</h5>
+                          <ul class="sub-categories">
+
+                          </ul>
+                      </div>
+                    </div>
+                    <div className='sub-navigation__category-row'>
+                    
+                    </div>
+                  </div>
+                </nav>
+              </div>
+            </li>
+            <li className='first-level'>
+              <Link
+                className='navigation__link'
+                id='women'
+                onMouseEnter={this.handleMouseEnter}
+              >WOMEN</Link>
+              <div
+                className={`${
+                  this.state.isOpen && this.state.anchorEl === "women"
+                    ? "is-open"
+                    : ""
+                } sub-navigation`}
+                onMouseLeave={this.handleMouseLeave}
+              >
+                <nav className='sub-navigation__wrapper sub-navigation_new-arrivals'>
+                  <div className='sub-navigation__categories'>
+                    <div className='sub-navigation__category-row'>
+                      <div className='nav-group sub-navigation__category-group'>
+                        <h5 className='sub-navigation__categories-header'>
+                          <Link>MEN'S NEW ARRIVALS</Link>
+                        </h5>
+                        <h5 className='sub-navigation__categories-header'>
+                          <Link>WOMEN'S NEW ARRIVALS</Link>
+                        </h5>
+                        <h5 className='sub-navigation__categories-header'>
+                          <Link>KID'S NEW ARRIVALS</Link>
+                        </h5>
+                      </div> 
+                    </div>
+                  </div>
+                </nav>
+              </div>
+            </li>
+          </ul>
+        </nav>
+        <div
+          style={{
+            position: 'relative'
+          }}
+        >
+          {this.state.isOpen && (<div className='nav-overlay'
+            style={{
+              backgroundColor: 'black',
+              backgroundSize: 'contain',
+              height: `calc(100vh - 100px)`,
+              width: '100%',
+              opacity: .25,
+              position: 'absolute',
+              top: '65px',
+              zIndex: 1
+            }}
+            ></div>)}
+        </div>
+      </div>
+    );
+  }
+};
+
+export default MenuPrimary;
