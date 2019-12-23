@@ -5,9 +5,9 @@ import './menuPrimary.styles.css';
 
 
 class MenuPrimary extends Component {
-  state = {
+  state = { 
     isOpen: false,
-    anchorEl: null
+    anchorEl: null,
   };
 
   handleMenuItemHover = event =>
@@ -16,20 +16,26 @@ class MenuPrimary extends Component {
       anchorEl: event.currentTarget.id
     });
 
+  handleMenuItemLeave = (event) => {
+    if(!event.relatedTarget.id && event.currentTarget.id) {
+      this.setState({
+        isOpen: false
+      })
+    } 
+  }
+
+  handleSubmenuEnter = () => {
+    this.setState({
+      isOpen: true,
+    })
+  };
+
   handleSubmenuLeave = () => {
     this.setState({
       isOpen: false,
       anchorEl: null
     })
   };
-
-  handleMenuItemLeave = (event) => {
-    if(!event.relatedTarget.id) {
-      this.setState({
-        isOpen: false
-      })
-    } 
-  }
 
   render() {
     const styles = {
@@ -52,16 +58,20 @@ class MenuPrimary extends Component {
       <Fragment>
         <div id="header" className="global-header">
         <div className='primary-logo'>
-          <Link className='primary-logo__link'>
+          <Link>
             <Logo/>
           </Link>
         </div>
         <nav id="primary-nav" className="navigation__wrapper">
           <ul className="navigation clearfix">
-            <li className="first-level">
+            <li className={`${
+              this.state.isOpen && this.state.anchorEl === "arrivals" 
+                ? "is-open"
+                : "" 
+            } first-level`}>
               <Link
                 id="arrivals"
-                className="navigation__link"
+                className='navigation__link'
                 onMouseEnter={this.handleMenuItemHover}
                 onMouseLeave={this.handleMenuItemLeave}
               >
@@ -74,6 +84,7 @@ class MenuPrimary extends Component {
                     ? "is-open"
                     : "" 
                 } sub-navigation`}
+                onMouseEnter={this.handleSubmenuEnter}
                 onMouseLeave={this.handleSubmenuLeave}
               >
                 <nav className="sub-navigation__wrapper sub-navigation_new-arrivals">
@@ -99,7 +110,11 @@ class MenuPrimary extends Component {
                 </nav>
               </div>
             </li>
-            <li className="first-level">
+            <li className={`${
+              this.state.isOpen && this.state.anchorEl === "men" 
+                ? "is-open"
+                : "" 
+            } first-level`}>
               <Link
                 id="men"
                 className="navigation__link"
@@ -115,7 +130,7 @@ class MenuPrimary extends Component {
                     ? "is-open"
                     : ""
                 } sub-navigation`}
-
+                onMouseEnter={this.handleSubmenuEnter}
                 onMouseLeave={this.handleSubmenuLeave}
               >
                 <nav className="sub-navigation__wrapper sub-navigation_mens">
@@ -194,7 +209,11 @@ class MenuPrimary extends Component {
                 </nav>
               </div>
             </li>
-            <li className="first-level">
+            <li className={`${
+              this.state.isOpen && this.state.anchorEl === "women" 
+                ? "is-open"
+                : "" 
+            } first-level`}>
               <Link
                 id="women"
                 className="navigation__link"
@@ -210,6 +229,7 @@ class MenuPrimary extends Component {
                     ? "is-open"
                     : ""
                 } sub-navigation`}
+                onMouseEnter={this.handleSubmenuEnter}
                 onMouseLeave={this.handleSubmenuLeave}
               >
                 <nav className="sub-navigation__wrapper sub-navigation_womens">
@@ -286,7 +306,11 @@ class MenuPrimary extends Component {
                 </nav>
               </div>
             </li>
-            <li className="first-level">
+            <li className={`${
+              this.state.isOpen && this.state.anchorEl === "kids" 
+                ? "is-open"
+                : "" 
+            } first-level`}>
               <Link
                 id="kids"
                 className="navigation__link"
@@ -302,6 +326,7 @@ class MenuPrimary extends Component {
                     ? "is-open"
                     : ""
                 } sub-navigation`}
+                onMouseEnter={this.handleSubmenuEnter}
                 onMouseLeave={this.handleSubmenuLeave}
               >
                 <nav className="sub-navigation__wrapper sub-navigation_new-arrivals">
@@ -356,7 +381,11 @@ class MenuPrimary extends Component {
                 </nav>
               </div>
             </li>
-            <li className="first-level">
+            <li className={`${
+              this.state.isOpen && this.state.anchorEl === "shoes" 
+                ? "is-open"
+                : "" 
+            } first-level`}>
               <Link
                 id="shoes"
                 className="navigation__link"
@@ -372,6 +401,7 @@ class MenuPrimary extends Component {
                     ? "is-open"
                     : ""
                 } sub-navigation`}
+                onMouseEnter={this.handleSubmenuEnter}
                 onMouseLeave={this.handleSubmenuLeave}
               >
                 <nav className="sub-navigation__wrapper sub-navigation_footwear">
@@ -413,7 +443,7 @@ class MenuPrimary extends Component {
                       </div>
                       <div className="nav-group sub-navigation__category-group">
                         <h5 className="sub-navigation__categories-header">
-                          <Link>KIDS'S SHOES</Link>
+                          <Link>KID'S SHOES</Link>
                         </h5>
                         <ul className='sub-categories'>
                           <li><Link>Running Shoes</Link></li>
@@ -425,7 +455,11 @@ class MenuPrimary extends Component {
                 </nav>
               </div>
             </li>
-            <li className="first-level">
+            <li className={`${
+              this.state.isOpen && this.state.anchorEl === "outlet" 
+                ? "is-open"
+                : "" 
+            } first-level`}>
               <Link
                 id="outlet"
                 className="navigation__link"
@@ -441,8 +475,8 @@ class MenuPrimary extends Component {
                     ? "is-open"
                     : ""
                 } sub-navigation`}
-                onMouseLeave={this.handleSubmenuLeave}
-                
+                onMouseEnter={this.handleSubmenuEnter}
+                onMouseLeave={this.handleSubmenuLeave}  
               >
                 <nav className="sub-navigation__wrapper sub-navigation_new_outlet">
                   <div className="sub-navigation__categories">

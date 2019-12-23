@@ -131,7 +131,7 @@ ol, ul {
   text-align: center;
 }
 
-.is-open {
+.is-open .sub-navigation{
   display: block
 }
 
@@ -144,6 +144,7 @@ ol, ul {
 .is-open .navigation__link:after, .navigation__link:hover:after {
   bottom: 0;
 }
+
 
 .sub-navigation {
   display: none;
